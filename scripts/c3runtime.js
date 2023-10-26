@@ -3766,6 +3766,20 @@ err)}}};
 
 {
 self["C3_Shaders"] = {};
+self["C3_Shaders"]["grayscale"] = {
+	glsl: "varying mediump vec2 vTex;\nuniform lowp sampler2D samplerFront;\nuniform lowp float intensity;\nvoid main(void)\n{\nlowp vec4 front = texture2D(samplerFront, vTex);\nlowp float gray = front.r * 0.299 + front.g * 0.587 + front.b * 0.114;\ngl_FragColor = mix(front, vec4(gray, gray, gray, front.a), intensity);\n}",
+	glslWebGL2: "",
+	wgsl: "%%SAMPLERFRONT_BINDING%% var samplerFront : sampler;\n%%TEXTUREFRONT_BINDING%% var textureFront : texture_2d<f32>;\nstruct ShaderParams {\nintensity : f32\n};\n%%SHADERPARAMS_BINDING%% var<uniform> shaderParams : ShaderParams;\n%%C3_UTILITY_FUNCTIONS%%\n%%FRAGMENTINPUT_STRUCT%%\n%%FRAGMENTOUTPUT_STRUCT%%\n@fragment\nfn main(input : FragmentInput) -> FragmentOutput\n{\nvar front : vec4<f32> = textureSample(textureFront, samplerFront, input.fragUV);\nvar gray : f32 = c3_grayscale(front.rgb);\nvar output : FragmentOutput;\noutput.color = mix(front, vec4<f32>(gray, gray, gray, front.a), shaderParams.intensity);\nreturn output;\n}",
+	blendsBackground: false,
+	usesDepth: false,
+	extendBoxHorizontal: 0,
+	extendBoxVertical: 0,
+	crossSampling: false,
+	mustPreDraw: false,
+	preservesOpaqueness: true,
+	animated: false,
+	parameters: [["intensity",0,"percent"]]
+};
 
 }
 
