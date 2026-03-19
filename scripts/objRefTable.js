@@ -430,6 +430,7 @@ self.C3_JsPropNameTable = [
 	{Sprite: 0},
 	{Texto_seleccion: 0},
 	{dienteDeLeon: 0},
+	{optimizado: 0},
 	{nivelMaxActual: 0},
 	{playMusic_nvl1: 0},
 	{finalScene_nvl1: 0},
@@ -732,5 +733,6 @@ self.InstanceType = {
 	FuenteSprite: class extends self.ISpriteFontInstance {},
 	Sprite: class extends self.ISpriteInstance {},
 	Texto_seleccion: class extends self.ISpriteInstance {},
-	dienteDeLeon: class extends self.ISpriteInstance {}
+	dienteDeLeon: class extends self.ISpriteInstance {},
+	optimizado: class extends self.ISpriteInstance {}
 }
