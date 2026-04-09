@@ -1519,7 +1519,7 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
-			return () => C3.lerp(n0.ExpObject(), (n1.ExpObject() + 200), 0.04);
+			return () => C3.lerp(n0.ExpObject(), (n1.ExpObject() + 250), 0.04);
 		},
 		() => "caer",
 		() => "caminar",
